@@ -1,0 +1,114 @@
+const arr = [5, 2, 9, 1, 5, 6];
+
+// Sorting in descending order
+const sortedArray = arr.sort((a, b) => b - a);
+
+console.log(sortedArray);
+
+
+
+// Java programs//
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ShuffleArray {
+    public static void main(String[] args) {
+        // Create an array with the values (1, 2, 3, 4, 5, 6, 7)
+        Integer[] array = {1, 2, 3, 4, 5, 6, 7};
+
+        // Convert the array to a list for shuffling
+        List<Integer> list = Arrays.asList(array);
+
+        // Shuffle the list
+        Collections.shuffle(list);
+
+        // Convert the shuffled list back to an array
+        Integer[] shuffledArray = list.toArray(new Integer[0]);
+
+        // Print the shuffled array
+        for (int value : shuffledArray) {
+            System.out.print(value + " ");
+        }
+    }
+}
+
+
+// Java second program
+import java.util.HashMap;
+
+public class RomanToInteger {
+    public static void main(String[] args) {
+        String romanNumeral = "IX";
+        int result = romanToInt(romanNumeral);
+        System.out.println("Integer representation of " + romanNumeral + " is: " + result);
+    }
+
+    public static int romanToInt(String s) {
+        HashMap<Character, Integer> romanValues = new HashMap<>();
+        romanValues.put('I', 1);
+        romanValues.put('V', 5);
+        romanValues.put('X', 10);
+        romanValues.put('L', 50);
+        romanValues.put('C', 100);
+        romanValues.put('D', 500);
+        romanValues.put('M', 1000);
+
+        int result = 0;
+        int prevValue = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            char currentChar = s.charAt(i);
+            int currentValue = romanValues.get(currentChar);
+
+            if (prevValue > currentValue) {
+                result -= currentValue;
+            } else {
+                result += currentValue;
+            }
+
+            prevValue = currentValue;
+        }
+
+        return result;
+    }
+}
+
+
+
+
+// Java 3rd panogram
+import java.util.HashSet;
+
+public class PangramChecker {
+    public static void main(String[] args) {
+        String input = "The quick brown fox jumps over the lazy dog";
+        
+        if (isPangram(input)) {
+            System.out.println("It is a pangram.");
+        } else {
+            System.out.println("It is not a pangram.");
+        }
+    }
+
+    public static boolean isPangram(String input) {
+        // Create a HashSet to store the unique letters in the input
+        HashSet<Character> letters = new HashSet<>();
+
+        // Convert the input to lowercase and remove spaces
+        input = input.toLowerCase().replaceAll(" ", "");
+
+        // Iterate through each character in the input string
+        for (char c : input.toCharArray()) {
+            if (Character.isLetter(c)) {
+                letters.add(c);
+            }
+        }
+
+        // Check if there are 26 unique letters (A to Z)
+        return letters.size() == 26;
+    }
+}
+
+
+
